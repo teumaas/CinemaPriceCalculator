@@ -1,4 +1,4 @@
-package domain;
+package com.company.domain;
 
 public enum TicketExportFormat
 {
