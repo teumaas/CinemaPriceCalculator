@@ -64,7 +64,7 @@ public class Order
             // & student order
             if(tickets.size() >= 6
                     && (dayOfWeek >= 6 && dayOfWeek <= 7)
-                    && this.isStudentOrder){
+                    && !this.isStudentOrder){
                 ticketPrice = ticketPrice * 0.9;
             }
 
