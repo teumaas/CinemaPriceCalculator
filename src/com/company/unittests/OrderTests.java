@@ -69,9 +69,11 @@ public class OrderTests {
     }
 
     @Test
-    public void testPremiumSeatCostIncrease() {
+    public void testPremiumSeatStudentCostIncrease() {
         Movie sampleMovie = new Movie("The Algorithm");
-        MovieScreening sampleScreening = new MovieScreening(sampleMovie, LocalDateTime.now(), 11.0);
+        LocalDateTime localDateTime =
+                LocalDateTime.of(2021, 2, 2, 14, 33, 48, 123456789);
+        MovieScreening sampleScreening = new MovieScreening(sampleMovie, localDateTime, 11.0);
 
         MovieTicket sampleTicketOne = new MovieTicket(sampleScreening, true, 5, 1);
         MovieTicket sampleTicketTwo = new MovieTicket(sampleScreening, true, 5, 2);
@@ -84,8 +86,30 @@ public class OrderTests {
 
         Order order = new Order(1, true);
         order.setTickets(tickets);
-
         assertTrue(order.calculatePrice() == 26);
+
+    }
+
+    @Test
+    public void testPremiumSeatRegularCostIncrease() {
+        Movie sampleMovie = new Movie("The Algorithm");
+        LocalDateTime localDateTime =
+                LocalDateTime.of(2021, 2, 6, 14, 33, 48, 123456789);
+        MovieScreening sampleScreening = new MovieScreening(sampleMovie, localDateTime, 11.0);
+
+        MovieTicket sampleTicketOne = new MovieTicket(sampleScreening, true, 5, 1);
+        MovieTicket sampleTicketTwo = new MovieTicket(sampleScreening, true, 5, 2);
+        MovieTicket sampleTicketThree = new MovieTicket(sampleScreening, true, 5, 3);
+
+        ArrayList<MovieTicket> tickets = new ArrayList<>();
+        tickets.add(sampleTicketOne);
+        tickets.add(sampleTicketTwo);
+        tickets.add(sampleTicketThree);
+
+        Order order = new Order(1, false);
+        order.setTickets(tickets);
+        System.out.println(order.calculatePrice());
+        assertTrue(order.calculatePrice() == 42);
 
     }
 
