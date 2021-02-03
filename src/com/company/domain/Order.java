@@ -106,6 +106,10 @@ public class Order
         }
     }
 
+    public void setTickets(ArrayList<MovieTicket> tickets) {
+        this.tickets = tickets;
+    }
+
     public void export(TicketExportFormat exportFormat)
     {
         // 1.2
