@@ -27,8 +27,6 @@ public class OrderTests {
         tickets.add(sampleTicketThree);
         Order order = new Order(1, false);
         order.setTickets(tickets);
-        DayOfWeek dayOfWeekDay = localDateTime.getDayOfWeek();
-        int dayOfWeek = dayOfWeekDay.getValue();
 
         // On Monday-thursday should return 22, else 33: testing tuesday:
         assertTrue(order.calculatePrice() == 22);
@@ -87,7 +85,6 @@ public class OrderTests {
         tickets.add(sampleTicketThree);
         Order order = new Order(1, false);
         order.setTickets(tickets);
-        System.out.println(order.calculatePrice());
 
         // Second ticket not free, (11+3)*3 = 42 expected:
         assertTrue(order.calculatePrice() == 42);
