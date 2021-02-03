@@ -1,7 +1,8 @@
 package com.company.domain;
 
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class Order
 {
@@ -32,16 +33,21 @@ public class Order
     public double calculatePrice()
     {
         ArrayList<Double> pricesToAddTemp = new ArrayList<>();
-
-        // Day of the week
-        Calendar c = Calendar.getInstance();
-        java.util.Date date = new java.util.Date();
-        c.setTime(date);
-        int dayOfWeek = c.get(Calendar.DAY_OF_WEEK);
+        boolean mondayToThursday = false;
 
         // Iterate over every ticket
         for(MovieTicket ticket : tickets){
-            double ticketPrice = 11.0; // Assumption: ticket price 11 euro Pathé
+
+            // Price and datetime of MovieScreening
+            double ticketPrice = ticket.getMovieScreening().getPricePerSeat();
+            LocalDateTime ticketDateTime = ticket.getMovieScreening().getDateAndTime();
+            DayOfWeek dayOfWeekDay = ticketDateTime.getDayOfWeek();
+            int dayOfWeek = dayOfWeekDay.getValue();
+
+            // Set order mon-thurs
+            if (dayOfWeek >= 1 && dayOfWeek <= 4){
+                mondayToThursday = true;
+            }
 
             // Add price to ticket if Premium
             if(ticket.isPremiumTicket()){
@@ -69,8 +75,7 @@ public class Order
         // Second ticket free if:
         // - order is marked as Student order
         // & if day == ma-do
-        if(this.isStudentOrder
-                || (dayOfWeek >= 1 && dayOfWeek <= 4)){
+        if(this.isStudentOrder || (mondayToThursday)){
             int a = 0;
             ArrayList<Double> pricesToAddFinal = new ArrayList<>();
 
