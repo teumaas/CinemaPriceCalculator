@@ -1,11 +1,7 @@
 package domain;
 
-import com.sun.org.apache.xpath.internal.functions.FuncFalse;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDateTime;
 
 public class Order
 {
@@ -60,7 +56,9 @@ public class Order
             // - 6 tickets or more on order
             // & weekend day
             // & student order
-            if(tickets.size() >= 6 && (dayOfWeek >= 6 && dayOfWeek <= 7) && this.isStudentOrder){
+            if(tickets.size() >= 6
+                    && (dayOfWeek >= 6 && dayOfWeek <= 7)
+                    && this.isStudentOrder){
                 ticketPrice = ticketPrice * 0.9;
             }
 
@@ -71,7 +69,8 @@ public class Order
         // Second ticket free if:
         // - order is marked as Student order
         // & if day == ma-do
-        if(this.isStudentOrder || (dayOfWeek >= 1 && dayOfWeek <= 4)){
+        if(this.isStudentOrder || (dayOfWeek >= 1
+                && dayOfWeek <= 4)){
             int a = 0;
             ArrayList<Double> pricesToAddFinal = new ArrayList<>();
 
