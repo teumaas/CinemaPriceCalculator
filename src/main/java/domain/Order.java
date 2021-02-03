@@ -45,18 +45,21 @@ public class Order
 
         // Iterate over every ticket
         for(MovieTicket ticket : tickets){
-            double ticketPrice = 11.0; // Assumption: ticket price 11 euro Pathé (outrageous)
+            double ticketPrice = 11.0; // Assumption: ticket price 11 euro Pathé
 
             // Add price to ticket if Premium
             if(ticket.isPremiumTicket()){
-                if(this.isStudentOrder){ // if the order is marked as Student order, add 2. Else add 3.
+                if(this.isStudentOrder){ // If the order is marked as Student order, add 2. Else add 3.
                     ticketPrice = ticketPrice + 2.0;
                 } else {
                     ticketPrice = ticketPrice + 3.0;
                 }
             }
 
-            // 10% discount on order if 6 tickets or more on order & weekend day & student order
+            // 10% discount on order if
+            // - 6 tickets or more on order
+            // & weekend day
+            // & student order
             if(tickets.size() >= 6 && (dayOfWeek >= 6 && dayOfWeek <= 7) && this.isStudentOrder){
                 ticketPrice = ticketPrice * 0.9;
             }
@@ -67,7 +70,7 @@ public class Order
 
         // Second ticket free if:
         // - order is marked as Student order
-        // - if day == ma-do
+        // & if day == ma-do
         if(this.isStudentOrder || (dayOfWeek >= 1 && dayOfWeek <= 4)){
             int a = 0;
             ArrayList<Double> pricesToAddFinal = new ArrayList<>();
