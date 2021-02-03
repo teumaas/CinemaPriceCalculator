@@ -69,8 +69,8 @@ public class Order
         // Second ticket free if:
         // - order is marked as Student order
         // & if day == ma-do
-        if(this.isStudentOrder || (dayOfWeek >= 1
-                && dayOfWeek <= 4)){
+        if(this.isStudentOrder
+                || (dayOfWeek >= 1 && dayOfWeek <= 4)){
             int a = 0;
             ArrayList<Double> pricesToAddFinal = new ArrayList<>();
 
