@@ -91,7 +91,7 @@ public class OrderTests {
     }
 
     @Test
-    public void testTenPercentDiscountWhenSixOrMoreTickets() {
+    public void testTenPercentDiscountWhenSixOrMoreTicketsInTheWeekend() {
         Movie sampleMovie = new Movie("The Algorithm");
         LocalDateTime localDateTime = LocalDateTime.of(2021, 2, 6, 14, 33, 48, 123456789);
         MovieScreening sampleScreening = new MovieScreening(sampleMovie, localDateTime, 11.0);
