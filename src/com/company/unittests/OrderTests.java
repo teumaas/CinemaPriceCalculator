@@ -48,7 +48,6 @@ public class OrderTests {
 
         // Second ticket should be free, so not 33 but 22 expected:
         assertTrue(order.calculatePrice() == 22);
-
     }
 
     @Test
@@ -112,7 +111,6 @@ public class OrderTests {
 
         // (11 * 0.9) * 6 = 59.4 expected:
         assertTrue(order.calculatePrice() == 59.4);
-
     }
 
     @Test
@@ -138,6 +136,5 @@ public class OrderTests {
 
         // (11 * 6) / 2 = 33 expected:
         assertTrue(order.calculatePrice() == 33);
-
     }
 }
