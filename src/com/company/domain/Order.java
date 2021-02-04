@@ -1,8 +1,15 @@
 package com.company.domain;
 
+import jdk.nashorn.internal.ir.debug.JSONWriter;
+
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.io.FileWriter;
+import java.io.IOException;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Order
 {
@@ -110,12 +117,48 @@ public class Order
         this.tickets = tickets;
     }
 
-    public void export(TicketExportFormat exportFormat)
-    {
-        // 1.2
+    public void export(TicketExportFormat exportFormat) {
+        FileWriter file;
+        JSONObject jsonObject = new JSONObject();
+        JSONArray ticketArray = new JSONArray();
 
-        // Bases on the string respresentations of the tickets (toString), write
-        // the ticket to a file with naming convention Order_<orderNr>.txt of
-        // Order_<orderNr>.json
+        if(exportFormat.equals(TicketExportFormat.JSON)) {
+
+            try {
+                file = new FileWriter(String.format("Order_%s.json", orderNr));
+
+                for(MovieTicket ticket : tickets) {
+                    ticketArray.put("Title");
+                    ticketArray.put(ticket.getMovieScreening());
+                    ticketArray.put("Premium");
+                    ticketArray.put(ticket.isPremiumTicket());
+                }
+
+                jsonObject.put("Tickets", ticketArray);
+                jsonObject.put("TotalPrice", String.valueOf(calculatePrice()));
+
+                file.write(jsonObject.toString());
+
+                file.flush();
+                file.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+        }
+
+        if(exportFormat.equals(TicketExportFormat.PLAINTEXT)) {
+            try {
+                file = new FileWriter(String.format("Order_%s.txt", orderNr));
+                for(MovieTicket ticket : tickets) {
+                    file.write(ticket.toString() + "\n");
+                }
+                file.write("\nTotal: €" + String.valueOf(calculatePrice()));
+
+                file.flush();
+                file.close();
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+        }
     }
 }

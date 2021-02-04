@@ -1,6 +1,7 @@
 package com.company.domain;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MovieScreening
 {
@@ -30,6 +31,9 @@ public class MovieScreening
 
     @Override
     public String toString() {
-        return movie.getTitle() + " - " + dateAndTime;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm yyyy-MM-dd");
+        String formatDateTime = dateAndTime.format(formatter);
+
+        return movie.getTitle() + " - " + formatDateTime;
     }
 }

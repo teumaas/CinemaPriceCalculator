@@ -7,8 +7,21 @@
     <groupId>org.avans.aei-i.ivt33.cinema</groupId>
     <artifactId>cinema-price-calculator</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <repositories>
+        <repository>
+            <id>mvnrepository</id>
+            <url>http://www.mvnrepository.com</url>
+        </repository>
+    </repositories>
+    <dependencies>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20201115</version>
+        </dependency>
+    </dependencies>
 
-	<build>
+    <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -19,6 +32,8 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>
 
+    </build>
 </project>
+
+

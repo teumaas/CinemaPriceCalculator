@@ -1,9 +1,6 @@
 package com.company;
 
-import com.company.domain.Movie;
-import com.company.domain.MovieScreening;
-import com.company.domain.MovieTicket;
-import com.company.domain.Order;
+import com.company.domain.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -29,5 +26,7 @@ public class Main {
         Order order = new Order(1, true);
         order.setTickets(tickets);
         System.out.println("Total order price: €" + order.calculatePrice() + "");
+
+        order.export(TicketExportFormat.JSON);
     }
 }
