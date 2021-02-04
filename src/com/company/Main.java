@@ -10,11 +10,12 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Voorbereiding op werkcollege 1");
 
-        ArrayList<MovieTicket> movieTicketSampleList = new ArrayList<>();
+        //ArrayList<MovieTicket> movieTicketSampleList = new ArrayList<>();
+
         Movie sampleMovie = new Movie("The Algorithm");
         MovieScreening sampleScreening = new MovieScreening(sampleMovie, LocalDateTime.now(), 11.0);
 
-        MovieTicket sampleTicketOne = new MovieTicket(sampleScreening, false, 5, 1);
+        MovieTicket sampleTicketOne = new MovieTicket(sampleScreening, true, 5, 1);
         MovieTicket sampleTicketTwo = new MovieTicket(sampleScreening, false, 5, 2);
         MovieTicket sampleTicketThree = new MovieTicket(sampleScreening, false, 5, 3);
 
