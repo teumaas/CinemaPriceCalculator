@@ -1,6 +1,9 @@
 package com.company;
 
 import com.company.domain.*;
+import com.company.domain.exporting.Exporter;
+import com.company.domain.exporting.JsonExporter;
+import com.company.domain.exporting.TextExporter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -28,6 +31,10 @@ public class Main {
         order.setTickets(tickets);
         System.out.println("Total order price: €" + order.calculatePrice() + "");
 
-        order.export(TicketExportFormat.JSON);
+        Exporter exporter1 = new Exporter(new JsonExporter());
+        exporter1.exportFile(order, "foo");
+
+        Exporter exporter2 = new Exporter(new TextExporter());
+        exporter2.exportFile(order, "bar");
     }
 }

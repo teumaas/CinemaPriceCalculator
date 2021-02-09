@@ -117,48 +117,6 @@ public class Order
         this.tickets = tickets;
     }
 
-    public void export(TicketExportFormat exportFormat) {
-        FileWriter file;
-        JSONObject jsonObject = new JSONObject();
-        JSONArray ticketArray = new JSONArray();
+    public ArrayList<MovieTicket> getTickets() { return this.tickets; }
 
-        if(exportFormat.equals(TicketExportFormat.JSON)) {
-
-            try {
-                file = new FileWriter(String.format("Order_%s.json", orderNr));
-
-                for(MovieTicket ticket : tickets) {
-                    ticketArray.put("Title");
-                    ticketArray.put(ticket.getMovieScreening());
-                    ticketArray.put("Premium");
-                    ticketArray.put(ticket.isPremiumTicket());
-                }
-
-                jsonObject.put("Tickets", ticketArray);
-                jsonObject.put("TotalPrice", String.valueOf(calculatePrice()));
-
-                file.write(jsonObject.toString());
-
-                file.flush();
-                file.close();
-            } catch (IOException e) {
-                System.out.println(e);
-            }
-        }
-
-        if(exportFormat.equals(TicketExportFormat.PLAINTEXT)) {
-            try {
-                file = new FileWriter(String.format("Order_%s.txt", orderNr));
-                for(MovieTicket ticket : tickets) {
-                    file.write(ticket.toString() + "\n");
-                }
-                file.write("\nTotal: €" + String.valueOf(calculatePrice()));
-
-                file.flush();
-                file.close();
-            } catch (IOException e) {
-                System.out.println(e);
-            }
-        }
-    }
 }
