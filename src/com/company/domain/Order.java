@@ -1,15 +1,8 @@
 package com.company.domain;
 
-import jdk.nashorn.internal.ir.debug.JSONWriter;
-
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.io.FileWriter;
-import java.io.IOException;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class Order
 {
