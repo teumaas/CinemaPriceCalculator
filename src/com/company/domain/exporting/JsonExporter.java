@@ -3,6 +3,7 @@ package com.company.domain.exporting;
 import com.company.domain.MovieTicket;
 import com.company.domain.Order;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.FileWriter;
@@ -34,7 +35,7 @@ public class JsonExporter implements IExporter {
 
             file.flush();
             file.close();
-        } catch (IOException err) {
+        } catch (IOException | JSONException err) {
             System.out.println("Error whilst trying to export order to JSON-file:");
             System.out.println(err.toString());
         }
