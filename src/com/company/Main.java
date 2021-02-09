@@ -4,6 +4,9 @@ import com.company.domain.*;
 import com.company.domain.exporting.Exporter;
 import com.company.domain.exporting.JsonExporter;
 import com.company.domain.exporting.TextExporter;
+import com.company.domain.price_calculation.PriceCalculator;
+import com.company.domain.price_calculation.RegularOrderCalculator;
+import com.company.domain.price_calculation.StudentOrderCalculator;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -29,7 +32,9 @@ public class Main {
 
         Order order = new Order(1, true);
         order.setTickets(tickets);
-        System.out.println("Total order price: €" + order.calculatePrice() + "");
+
+        System.out.println("Price for order: " + order.calculatePrice());
+
 
         Exporter exporter1 = new Exporter(new JsonExporter());
         exporter1.exportFile(order, "foo");
