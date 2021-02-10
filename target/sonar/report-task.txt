@@ -1,0 +1,6 @@
+projectKey=org.avans.aei-i.ivt33.cinema:cleanstream-cinema
+serverUrl=https://sonarqube.avans-informatica-breda.nl
+serverVersion=7.4.0.18908
+dashboardUrl=https://sonarqube.avans-informatica-breda.nl/dashboard?id=org.avans.aei-i.ivt33.cinema%3Acleanstream-cinema
+ceTaskId=AXeLUmGdTNm1xigl98Na
+ceTaskUrl=https://sonarqube.avans-informatica-breda.nl/api/ce/task?id=AXeLUmGdTNm1xigl98Na
